@@ -1,0 +1,7 @@
+<div *ngIf="isLoading" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+</div>
+<div *ngIf="isDetails">
+    <app-company-form [company]="company"></app-company-form>
+</div>

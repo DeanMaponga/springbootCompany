@@ -1,0 +1,135 @@
+Tuesday 10 October 2023
+15:07
+- initialized springboot using spring initializer
+
+#Creating ERPNExt installation (https://codewithkarani.com/2021/07/17/how-to-install-erpnext-in-ubuntu-20-04-step-by-step-guide/)
+- sudo apt -y install nginx
+- sudo apt install mariadb-server
+- sudo mysql -u root
+#    USE mysql;
+#    UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+#    UPDATE user SET authentication_string=password('TestPassword#123') WHERE user='root';
+#    FLUSH PRIVILEGES;
+#    EXIT;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'TestPassword#123';
+FLUSH PRIVILEGES;
+EXIT;
+- sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+- copy contents of this file: https://github.com/karani-gk/ERPNext_mariadb_conf/blob/main/50-server.cnf
+- sudo systemctl restart mariadb
+- sudo useradd -m -s /bin/bash erpnext
+- sudo passwd erpnext #create a secure secret password (mine is erpnext)
+- sudo su - erpnext
+tee -a ~/.bashrc<<EOF
+PATH=\$PATH:~/.local/bin/
+EOF
+- 
+#Old mysql configuration
+#- sudo mysql_secure_installation
+#- sudo mysql
+#- CREATE DATABASE erpnextdb;
+#- CREATE USER 'erpnextuser'@'localhost' IDENTIFIED BY 'TestPassword'; #Use secure password, don't store in git
+#- CREATE USER 'erpnextdb'@'localhost' IDENTIFIED BY 'TestPassword#123';
+#- GRANT ALL PRIVILEGES ON *.* TO 'erpnextdb'@'localhost';
+#- FLUSH PRIVILEGES;
+#- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'TestPassword#123';
+#- sudo apt install supervisor nginx -y
+
+#install ERPNext 
+- https://www.rosehosting.com/blog/how-to-install-erpnext-on-ubuntu-22-04/
+- https://codewithkarani.com/2021/07/17/how-to-install-erpnext-in-ubuntu-20-04-step-by-step-guide/
+- https://codewithkarani.com/2022/08/18/install-erpnext-version-14/
+- useradd -m -d /opt/erpnext -U -r -s /bin/bash erpnext
+- sudo usermod -aG sudo erpnext
+- sudo apt install python3-pip python3-dev python3.10-venv python3-testresources libffi-dev libssl-dev wkhtmltopdf gcc g++ make redis-server -y
+- sudo su - erpnext
+- nano ~/.bashrc
+- append this: PATH=$PATH:~/.local/bin/
+- save & exit
+- source ~/.bashrc
+- sudo mkdir /opt/bench
+- sudo chown -R erpnext: /opt/bench
+- cd /opt/bench
+- sudo pip3 install frappe-bench
+- git clone https://github.com/frappe/bench bench-repo
+- pip3 install -e bench-repo
+- bench init erpnext
+- cd /opt/bench/erpnext
+#- export ERPNEXT_DB_USER=erpnextuser
+#- export ERPNEXT_DB_PASSWORD=TestPassword
+#alternative: bench install-app --db-name erpnext --db-user erpnextuser --db-password TestPassword
+#- bench setup --mariadb-user erpnextuser --mariadb-password TestPassword
+#- bench get-app branch=version-14 erpnext https://github.com/frappe/erpnext
+- bench get-app --branch=version-14 erpnext
+- bench new-site springbootErpNext.example.com
+- setup top sceret administrative password (mine is erpnext)
+- bench --site springbootErpNext.example.com install-app erpnext
+
+- #production setup
+- cd /opt/bench/erpnext
+- sudo /opt/erpnext/.local/bin/bench setup production erpnext
+
+Wednesday 11 october 2023
+- option2 installing erpnext using docker
+11:22 - installing docker (https://docs.docker.com/engine/install/ubuntu/)
+- for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+#ERPNExt setup 
+- username: admin
+- password: erpnext #Choose a top secret secure password
+- email: admin@springboot.com #This is just a dummy email for the project
+
+Thursday 12 October 2023 - creating basic springboot application
+- CREATE DATABASE erpnextdb;
+- CREATE USER 'erpnextuser'@'localhost' IDENTIFIED BY 'TestPassword';
+- GRANT ALL PRIVILEGES ON erpnextdb.* TO 'erpnextuser'@'localhost';
+- FLUSH PRIVILEGES;
+
+03:03 - testing endpoints
+- company endpoints working well
+- employee endpoints working well
+
+04:28 - adding angular client
+- created CorsConfig
+
+Friday 13 October 2023
+10:20
+- Deploying system on ubuntu server
+- Installing java & required software
+- sudo apt update && sudo apt upgrade
+- sudo apt install build-essential
+- sudo apt install openjdk-17-jre-headless 
+
+create ssh config file
+Host [serverName]
+  HostName [ipAddress]
+  User [username]
+  PasswordAuthentication yes
+  IdentityFile [filepath]/[filename].txt
+chmod 600 [filepath]/[filename].txt
+
+- generate jar file: Project Structure>Artifacts>+>JAR>for modules with dependencies>Choose project>choose main file>OK>OK
+- Build>Build Art6ifacts>Build
+- security tutorial: https://www.youtube.com/watch?v=hZykPiUyn48
+#Springboot login
+username: user
+password: e043ead5-e035-4dea-8ffc-1b979d7526ed
+
+building jar with gradle
+- Gradle Tool Window>[project name]>Tasks>build>jar
+- Open buil>libs to see jar file
+- run java -jar [filename].jar

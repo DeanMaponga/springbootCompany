@@ -1,0 +1,13 @@
+<h2 class="header">Company List</h2>
+<div *ngIf="isLoading else list" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+  </div>
+  <ng-template #list>
+    <mat-list *ngIf="companies.length > 0">
+      <mat-list-item *ngFor="let company of companies">
+        <app-company-card [company]="company"></app-company-card>
+      </mat-list-item>
+    </mat-list>
+    <p class="no-results" *ngIf="companies.length === 0">No companies found.</p>
+  </ng-template>

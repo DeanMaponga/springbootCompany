@@ -1,0 +1,17 @@
+<h2 class="header">{{title}}</h2> 
+<div *ngIf="isLoading" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+</div>
+<div *ngIf="isDeleted">
+  <div style="text-align: center;">
+    <p>Employee Deleted</p>
+  </div>
+</div>
+<div *ngIf="isDetails">
+    <div class="employee-button-container" style="margin-top: 10px; margin-bottom: 10px;">
+        <button mat-raised-button color="primary" (click)="deleteEmployee()">Delete Employee</button> 
+        <button mat-raised-button color="primary" (click)="updateEmployee()">Update Employee details</button>  
+    </div>
+    <app-employee-card [employee]="employee"></app-employee-card>
+</div>

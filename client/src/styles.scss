@@ -1,0 +1,159 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.company-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .company-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    background-color: #f9f9f9;
+  }
+
+  .navbar {
+    background-color: #f9f9f9;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .btn {
+    margin-left: 10px;
+  }
+
+  .sidenav-container {
+    height: 100%;
+  }
+    
+  .sidenav-content {
+    padding: 20px;
+  }
+
+  .sidenav {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidenav button {
+    width: 90%;
+    margin: 10px;
+  }
+
+  .sidenav button.selected {
+    background-color: #1976d2; 
+    color: white;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    height: 100px;
+  }
+  
+  .logo-text {
+    font-family: 'Courgette'; 
+    font-size: 24px;
+    font-weight: bold; 
+    color: #333; 
+  }
+
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-form-field {
+    width: 90%;
+    margin-right: 16px;
+}
+
+
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+}
+.button-container.mat-button-spacing-medium {
+    margin-bottom: 16px; 
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .spacer {
+    margin-right: 24px;
+  }
+  mat-list-item {
+    min-height: 600px; 
+  }
+  
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .container mat-form-field {
+    width: 100%;
+    margin-left: 8px;
+}
+
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .success-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .form-container {
+    margin-bottom: 50px;
+  }
+
+  .employee-list{
+    margin-bottom: 50px;
+  }
+
+  .employee-button-container {
+    display: flex;
+    justify-content: space-around;  
+  }

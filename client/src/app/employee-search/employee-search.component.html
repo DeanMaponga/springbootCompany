@@ -1,0 +1,24 @@
+<h2 class="header">{{title}}</h2> 
+<div class="search-bar-container">
+    <mat-form-field appearance="outline" class="example-spacer">
+      <mat-label>Search</mat-label>
+      <mat-hint>Enter employee name</mat-hint>
+      <input matInput [(ngModel)]="searchQuery" name="searchQuery">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" (click)="searchEmployees()" [disabled]="!canSubmit()">Search</button>
+</div>
+<div *ngIf="isSearching" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+</div>
+<div *ngIf="hasResults">
+    <mat-list *ngIf="employees.length > 0">
+    <mat-list-item *ngFor="let employee of employees">
+        <app-employee-card [employee]="employee"></app-employee-card>
+    </mat-list-item>
+    </mat-list>
+    <div class="no-results" *ngIf="employees.length === 0" style="text-align: center; margin: 10px;">
+        <p>No employees found.</p>
+    </div>
+    
+</div>

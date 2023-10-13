@@ -1,0 +1,29 @@
+<h2 class="header">{{title}}</h2> 
+<div *ngIf="isLoading" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+</div>
+<div *ngIf="isDeleted">
+  <div style="text-align: center;">
+    <p>Company Deleted</p>
+  </div>
+</div>
+<div *ngIf="isDetails">
+  <div class="button-container mat-button-spacing-medium">
+    <div class="spacer"></div>
+    <button mat-raised-button color="primary" (click)="deleteCompany()">Delete company</button> 
+    <div class="spacer"></div>
+    <button mat-raised-button color="primary" (click)="updateCompany()">Update company</button>  
+    <div class="spacer"></div>
+    <button mat-raised-button color="primary" (click)="addEmployee()">Add Employee</button>
+  </div>
+  <br/>
+  <div class="employee-list">
+    <mat-list *ngIf="employees.length > 0">
+      <mat-list-item *ngFor="let employee of employees">
+        <app-employee-card [employee]="employee"></app-employee-card>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <p class="no-results" *ngIf="employees.length === 0">No employees found, Add Employees.</p>
+</div>

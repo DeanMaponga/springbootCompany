@@ -1,0 +1,13 @@
+<h2 class="header">All employee List</h2>
+<div *ngIf="isLoading else list" class="loading-screen">
+    <mat-spinner></mat-spinner>
+    <p>Loading...</p>
+  </div>
+  <ng-template #list>
+    <mat-list *ngIf="employees.length > 0">
+    <mat-list-item *ngFor="let employee of employees">
+      <app-employee-card [employee]="employee"></app-employee-card>
+    </mat-list-item>
+  </mat-list>
+  <p class="no-results" *ngIf="employees.length === 0">No employees found.</p>
+</ng-template>

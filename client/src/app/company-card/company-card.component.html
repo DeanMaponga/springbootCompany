@@ -1,0 +1,16 @@
+<mat-card (click)="navigateToCompany()">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon >business</mat-icon>
+    </div>      
+      <mat-card-title>{{ company.name }}</mat-card-title>
+      <mat-card-subtitle>{{ company.address }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p><img [src]="company.imageUrl" style="height: 300px;" alt="Company Image"></p>
+        <p><strong>Industry:</strong> {{ company.industry }}</p>
+        <p><strong>Description:</strong> {{ company.description }}</p>
+        <p><strong>Phone Number:</strong> {{ company.phoneNumber }}</p>
+        <p><strong>Created Date:</strong> {{ getCreatedDate() }}</p>  
+    </mat-card-content>
+  </mat-card>

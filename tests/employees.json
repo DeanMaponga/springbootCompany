@@ -1,0 +1,122 @@
+[
+    {
+        "name":"Tatenda Mukonori",
+        "email":"tatenda@gmail.com",
+        "jobTitle":"Manager",
+        "jobDescription":"Manages the day to day operations of the shop",
+        "phoneNumber":"+263778147852",
+        "imageUrl":"https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697068862000,
+        "companyUid":1
+    },
+    {
+        "name":"James Kunaka",
+        "email":"jameskunaka#gmail.com",
+        "jobTitle":"Accountant",
+        "jobDescription":"Manages shop accounts",
+        "phoneNumber":"+263778147858",
+        "imageUrl":"https://images.unsplash.com/photo-1495603889488-42d1d66e5523??auto=format&fit=crop&w=720&q=80",
+        "startDate":1697068862000,
+        "companyUid":1
+    },
+    {
+        "name":"Mildred Shamu",
+        "email":"mildredshamhu@gmail.com",
+        "jobTitle":"Human Resources Manager",
+        "jobDescription":"Manages the daily need of the shop staff",
+        "phoneNumber":"+263778787852",
+        "imageUrl":"https://images.unsplash.com/photo-1499651681375-8afc5a4db253?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697068862000,
+        "companyUid":1
+    },
+    {
+        "name":"David Khosa",
+        "email":"davidkhosa@gmail.com",
+        "jobTitle":"Butcher",
+        "jobDescription":"Manager of butchery section sales & purchases",
+        "phoneNumber":"+263778178852",
+        "imageUrl":"https://images.unsplash.com/photo-1524660988542-c440de9c0fde?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697088862000,
+        "companyUid":1
+    },
+    {
+        "name":"Dr. Mayo",
+        "email":"mayo@gmail.com",
+        "jobTitle":"Medical Doctor",
+        "jobDescription":"General medical practitioner",
+        "phoneNumber":"+263778147878",
+        "imageUrl":"https://images.unsplash.com/photo-1612349316228-5942a9b489c2?auto=format&fit=crop&w=720&q=80",
+        "startDate":1698068862000,
+        "companyUid":2
+    },
+    {
+        "name":"Patience Dambwa",
+        "email":"patience@gmail.com",
+        "jobTitle":"nurse",
+        "jobDescription":"Assitant to Dr Mayo",
+        "phoneNumber":"+263778781852",
+        "imageUrl":"https://images.unsplash.com/photo-1592598015799-35c84b09394c?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697368862000,
+        "companyUid":2
+    },
+    {
+        "name":"Peter Jones",
+        "email":"peterjones@gmail.com",
+        "jobTitle":"Risk Manager",
+        "jobDescription":"Acturial Scientist who asseses insurance premiums for financial risk",
+        "phoneNumber":"+263778147781",
+        "imageUrl":"https://images.unsplash.com/photo-1554774853-719586f82d77?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697069862000,
+        "companyUid":3
+    },
+    {
+        "name":"Tonderai Chimuti",
+        "email":"tonderai@gmail.com",
+        "jobTitle":"Risk Manager",
+        "jobDescription":"Acturial Scientist who asseses insurance premiums for financial risk",
+        "phoneNumber":"+263778147783",
+        "imageUrl":"https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697072862000,
+        "companyUid":3
+    },
+    {
+        "name":"Takunda Muchenje",
+        "email":"takundamuchenje@gmail.com",
+        "jobTitle":"Software Engineer",
+        "jobDescription":"Full stck developer who makes various kinds of software",
+        "phoneNumber":"+263778147729",
+        "imageUrl":"https://images.unsplash.com/photo-1576993537667-c6d2386f90a2?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697368862000,
+        "companyUid":4
+    },
+    {
+        "name":"Precious Khumalo",
+        "email":"precious@gmail.com",
+        "jobTitle":"CEO",
+        "jobDescription":"Founder and Managing Director of company",
+        "phoneNumber":"+263778178152",
+        "imageUrl":"https://images.unsplash.com/photo-1495490140452-5a226aef25d4?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697468862000,
+        "companyUid":4
+    },
+    {
+        "name":"Dr Carol Mabvi",
+        "email":"carolmabvi@gmail.com",
+        "jobTitle":"Geology Proffessor",
+        "jobDescription":"Teaches Spatial measurements and conducts geological research with post graduate students",
+        "phoneNumber":"+263778147789",
+        "imageUrl":"https://images.unsplash.com/photo-1507152927179-bc4ebfef7103?auto=format&fit=crop&w=720&q=80",
+        "startDate":1697868862000,
+        "companyUid":5
+    },
+    {
+        "name":"Paida Moyo",
+        "email":"paidamoyo@gmail.com",
+        "jobTitle":"Human Resources Manager",
+        "jobDescription":"Manages the daily need of the staff in the ministry of technology",
+        "phoneNumber":"+263778178152",
+        "imageUrl":"https://images.unsplash.com/photo-1523825036634-aab3cce05919?auto=format&fit=crop&w=720&q=80",
+        "startDate":16972688620001,
+        "companyUid":6
+    }
+]

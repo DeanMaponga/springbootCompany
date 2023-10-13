@@ -1,0 +1,86 @@
+<div class="form-container container">
+    <h2 class="header">{{title}}</h2>
+    <div *ngIf="isDetails">
+      <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="form">
+        <p>
+          <mat-form-field  appearance="outline">
+            <mat-label>Company name</mat-label>
+            <mat-hint>Company name</mat-hint>
+            <input matInput formControlName="name">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-error *ngIf="companyForm.get('name')?.hasError('required')">Name is required.</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field  appearance="outline">
+            <mat-label>Company address</mat-label>
+            <mat-hint>Company address</mat-hint>
+            <input matInput formControlName="address">
+            <mat-error *ngIf="companyForm.get('address')?.hasError('required')">Address is required.</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field  appearance="outline">
+            <mat-label>Registration date</mat-label>
+            <mat-hint>press icon to choose Day/Month/year</mat-hint>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="registrationDate" readonly="true" required>
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error *ngIf="companyForm.get('createdDate')?.hasError('required')">Date of Registration is required.</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field  appearance="outline">
+              <mat-label>Industry</mat-label>
+              <mat-hint>Industry</mat-hint>
+              <input matInput formControlName="industry">
+              <mat-error *ngIf="companyForm.get('industry')?.hasError('required')">Industry is required.</mat-error>
+            </mat-form-field>
+          </p>
+        <p>
+          <mat-form-field  appearance="outline">
+            <mat-label>Description</mat-label>
+            <mat-hint>Description</mat-hint>
+            <input matInput formControlName="description">
+            <mat-error *ngIf="companyForm.get('description')?.hasError('required')">Description is required.</mat-error>
+          </mat-form-field>      
+        </p>
+        <p>
+          <mat-form-field  appearance="outline">
+            <input matInput formControlName="phoneNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Phone number</mat-hint>
+            <mat-label>Phone Number</mat-label>
+            <mat-error *ngIf="companyForm.get('phoneNumber')?.hasError('required')">Phone Number is required.</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field  appearance="outline">
+              <input matInput formControlName="imageUrl">
+              <mat-icon matSuffix>image</mat-icon>
+              <mat-hint>Image Url</mat-hint>
+              <mat-label>Image Url</mat-label>
+              <mat-error *ngIf="companyForm.get('imageUrl')?.hasError('required')">imageUrl is required.</mat-error>
+            </mat-form-field>
+          </p>
+        <p>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!companyForm.valid">Submit</button>
+        </p>
+      </form>
+    </div>
+    <div *ngIf="isLoading" class="loading-screen">
+      <mat-spinner></mat-spinner>
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="isSuccess" class="success-screen">
+      <mat-icon>check_circle</mat-icon>
+      <p>{{successMsg}}</p>
+      <button mat-raised-button color="primary" (click)="onOKButtonClicked()">OK</button>
+    </div>
+    <div *ngIf="isError" class="success-screen">
+      <mat-icon>X</mat-icon>
+      <p>Unable to create company</p>
+      <p>{{errorMsg}}</p>
+      <button mat-raised-button color="primary" (click)="onOKButtonClicked()">OK</button>
+    </div>
+  </div>

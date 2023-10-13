@@ -1,0 +1,14 @@
+<mat-card (click)="navigateToEmployee()">
+    <mat-card-header>
+      <mat-card-title>{{ employee?.name }}</mat-card-title>
+      <mat-card-subtitle><strong>Company: </strong>{{ employee?.company?.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><img [src]="employee?.imageUrl" style="height: 300px; padding-top:10px" alt="Employee Image"></p>
+      <p>JobTitle: {{ employee?.jobTitle }}</p>
+      <p>Description: {{ employee?.jobDescription }}</p>
+      <p>Email: {{ employee?.email }}</p>
+      <p>PhoneNumber: {{ employee?.phoneNumber }}</p>
+      <p>Start Date: {{ getStartDate() }}</p>
+    </mat-card-content>
+</mat-card>
