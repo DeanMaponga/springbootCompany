@@ -11,7 +11,9 @@ export class AppComponent {
   title = 'client';
   constructor(private router: Router,private apiService:ApiService) {}
   
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("home")
+  }
 
   currentPage(){
     return this.apiService.currentTab;

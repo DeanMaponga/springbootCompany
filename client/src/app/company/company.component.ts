@@ -17,10 +17,12 @@ export class CompanyComponent implements OnInit {
     this.apiService.getAllCompanies()
     .then((results) => {
       this.isLoading = false;
-      this.companies = results;
-      for(const company of this.companies){
-        if(company.id!=null){
-          this.apiService.AllCompanies[company.id]=company;
+      if(results!=null){
+        this.companies = results;
+        for(const company of this.companies){
+          if(company.id!=null){
+            this.apiService.AllCompanies[company.id]=company;
+          }
         }
       }
     })

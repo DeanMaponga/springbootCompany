@@ -1,10 +1,7 @@
-package com.example.companyRegister;
+package com.example.companyRegister.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 public class ApiTokenFilter implements HandlerInterceptor{

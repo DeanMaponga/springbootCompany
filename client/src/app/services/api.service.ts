@@ -8,20 +8,25 @@ import { Company } from '../models/company_model';
 })
 export class ApiService {
   currentTab: string = 'home';
-  private baseUrl = 'http://localhost:8080';
-  //private baseUrl = 'http://18.191.1.123:8000/';
-  apiKey = 'testKey';
+  //private baseUrl = 'http://localhost:8080';
+  //private baseUrl = 'https://localhost:443';
+  private baseUrl = 'https://apidev2.codevirtus.com/api';
+  localtoken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpYXQiOjE2OTczMDY1NDIsImV4cCI6MTY5ODc3Nzc3MX0.KzI-bE6S4NFmxOn2LDPfGrbYNTGbVYWqy4m0y5uBZF0";
+  token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpYXQiOjE2OTczMTQwODIsImV4cCI6MTY5ODc4NTMxMX0.WebvaTI-bS1cmGZpVzZppPN-XeZRP1UYuxG43ETSN8g";
+  oldToken = 'Basic ' + btoa('user:e043ead5-e035-4dea-8ffc-1b979d7526ed');
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       //'Authorization': `Bearer ${this.apiKey}`
-      'Authorization': 'Basic ' + btoa('user:e043ead5-e035-4dea-8ffc-1b979d7526ed') 
+      //'Authorization': `Bearer ${this.token}` //in practice do not hard code username & password like this
     }),
   };
   AllCompanies:any={}
   AllEmployees:any={}
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+  }
 
   log(data:any){
     console.log(data)

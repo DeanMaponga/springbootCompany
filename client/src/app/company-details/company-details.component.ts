@@ -37,10 +37,12 @@ export class CompanyDetailsComponent {
           this.title=`${this.company.name} Employees`;
           this.apiService.getCompanyEmployees(this.companyId)
           .then((results) => {
-            this.employees = results.reverse();
-            for(const employee of this.employees){
-              if(employee.id!=null){
-                this.apiService.AllEmployees[employee.id]=employee;
+            if(results!=null){
+              this.employees = results.reverse();
+              for(const employee of this.employees){
+                if(employee.id!=null){
+                  this.apiService.AllEmployees[employee.id]=employee;
+                }
               }
             }
             this.isLoading = false;

@@ -1,2 +1,2 @@
 # springbootCompany
-# springbootErpNext Connecting ERPNext to spiringboot
+#a company registration application

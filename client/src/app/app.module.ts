@@ -37,9 +37,11 @@ import { CompanyUpdateComponent } from './company-update/company-update.componen
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
 import { EmployeeSearchComponent } from './employee-search/employee-search.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   
   { path: 'employees', component: EmployeeComponent },
   { path: 'employee/:id', component: EmployeeDetailsComponent },
@@ -75,6 +77,7 @@ const routes: Routes = [
     EmployeeUpdateComponent,
     EmployeeDeleteComponent,
     EmployeeSearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

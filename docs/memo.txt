@@ -130,6 +130,94 @@ username: user
 password: e043ead5-e035-4dea-8ffc-1b979d7526ed
 
 building jar with gradle
-- Gradle Tool Window>[project name]>Tasks>build>jar
+- Gradle Tool Window>[project name]>Tasks>build>bootJar
 - Open buil>libs to see jar file
 - run java -jar [filename].jar
+
+17:32 - Installing nginx on server
+- sudo apt install nginx
+- nginx -v
+- sudo systemctl start nginx
+- sudo systemctl status nginx
+- sudo systemctl enable nginx #enable run on reboot
+- sudo nano /etc/nginx/sites-available/default
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name apidev2.codevirtus.com;
+
+        root /var/www/apidev2.codevirtus.com;
+        index index.html;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location /api/ {
+            proxy_pass https://localhost:8443/; #backslash is important
+        }
+}
+
+- copy files to location
+- sudo systemctl restart nginx
+- sudo systemctl status nginx
+
+open firewall for nginx
+- sudo ufw allow 'Nginx Full'
+
+17:57
+- Opened firewall, Website now visible, now setting up ssl
+- sudo apt install certbot python-certbot-nginx
+- sudo snap install --classic certbot
+- sudo certbot --nginx
+- setup nginx reverse proxy to allow traffic to api
+- added https://apidev2.codevirtus.com' to springboot CORS allowed hosts
+
+21:39 -Springboot encryption tutorial
+- https://dzone.com/articles/spring-boot-secured-by-lets-encrypt
+- certbot certonly --webroot -w /var/www/html -d [domain]:8080
+
+Saturday 14 October 2023 -self signing ssl
+05:05 
+- keytool -genkeypair -alias local_ssl -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore local-ssl.p12 -validity 365 -ext san=dns:localhost
+- password=123456789 #use your own secure password
+
+-allowed port 8443 in firewall ufw allow 8443
+-certbot certonly --standalone --cert-name local_ssl -d [domain-name] --non-interactive --agree-tos --email [email]@gmail.com --http-01-port=8443
+
+this was the result
+root@apidev2:/etc/letsencrypt/archive/local_ssl# ls -l
+total 20
+-rw-r--r-- 1 root root 1509 Oct 14 04:41 cert1.pem
+-rw-r--r-- 1 root root 3749 Oct 14 04:41 chain1.pem
+-rw-r--r-- 1 root root 5258 Oct 14 04:41 fullchain1.pem
+-rw------- 1 root root 241 Oct 14 04:41 privkey1.pem
+root@apidev2:/etc/letsencrypt/archive/local_ssl#
+
+- created a p12 file  by doing this: 
+openssl pkcs12 -export -out local_ssl.p12 -inkey privkey1.pem -in fullchain1.pem
+
+07:41 - proxy now works - closing port 8443
+- ufw deny 8443
+
+
+14:17 - creating an authentication system to use JWT & Spring security
+- tutorial: https://www.youtube.com/watch?v=KxqlJblhzfI
+- created a USerAccount model and implemented UserDetails from Spring security-
+- created Roles for users
+- generate 256 bit hex key https://randomkeygen.com
+
+{
+    "firstname":"second",
+    "lastname":"user",
+    "email":"user2@gmail.com",
+    "password":"1234"
+}
+
+
+registered user
+{
+    "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpYXQiOjE2OTczMDMzNjMsImV4cCI6MTY5NzMwNDgwM30.eBd7287fntZp0GlsKNlzti86NOrtNcBQ3oVHSudT_xY",
+    "refresh_token": null
+}
