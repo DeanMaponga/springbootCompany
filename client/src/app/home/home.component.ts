@@ -8,5 +8,17 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  title = 'client';
+  constructor(private router: Router,private apiService:ApiService) {}
   
+  ngOnInit() {
+  }
+
+  currentPage(){
+    return this.apiService.currentTab;
+  }
+  changePage(page: string) {
+    this.apiService.currentTab = page;
+    this.router.navigate([`/${page}`]);
+  }
 }

@@ -1,1 +1,17 @@
-<p>Home works!</p>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <div class="logo-container">
+        <h1 class="logo-text">Company register</h1>
+      </div>
+      <hr/>
+      <!--<button mat-raised-button color="primary" [ngClass]="{'selected': currentPage() === 'home'}" (click)="changePage('home')">Home</button>-->
+      <button mat-raised-button color="primary" [ngClass]="{'selected': currentPage() === 'add-company'}" (click)="changePage('add-company')">Add Company</button>
+      <button mat-raised-button color="primary" [ngClass]="{'selected': currentPage() === 'companies'}" (click)="changePage('companies')">View Companies</button>
+      <button mat-raised-button color="primary" [ngClass]="{'selected': currentPage() === 'employees'}" (click)="changePage('employees')">View Employees</button>
+      <button mat-raised-button color="primary" [ngClass]="{'selected': currentPage() === 'employee-search'}" (click)="changePage('employee-search')">Search Employees</button>
+      
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

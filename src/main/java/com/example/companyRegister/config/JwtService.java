@@ -43,11 +43,13 @@ public class JwtService {
     }
 
     public String generateToken(Map<String,Object>extraClaims, UserDetails userdetails){
+        Long now = System.currentTimeMillis();
+        Long year = 31536000000L;
         return Jwts.builder()
         .setClaims(extraClaims)
         .setSubject(userdetails.getUsername())
         .setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis()+1000*60*24))
+        .setExpiration(new Date(now+year))
         .signWith(getSignInKey(), SignatureAlgorithm.HS256)
         .compact();
     }

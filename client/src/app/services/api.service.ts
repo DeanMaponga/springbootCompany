@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders,HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../models/employee_model';
 import { Company } from '../models/company_model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +10,70 @@ import { Company } from '../models/company_model';
 export class ApiService {
   currentTab: string = 'home';
   //private baseUrl = 'http://localhost:8080';
-  //private baseUrl = 'https://localhost:443';
+  //private baseUrl = 'https://localhost:8443/api';
+  //oldToken = 'Basic ' + btoa('user:e043ead5-e035-4dea-8ffc-1b979d7526ed');
   private baseUrl = 'https://apidev2.codevirtus.com/api';
-  localtoken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpYXQiOjE2OTczMDY1NDIsImV4cCI6MTY5ODc3Nzc3MX0.KzI-bE6S4NFmxOn2LDPfGrbYNTGbVYWqy4m0y5uBZF0";
-  token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpYXQiOjE2OTczMTQwODIsImV4cCI6MTY5ODc4NTMxMX0.WebvaTI-bS1cmGZpVzZppPN-XeZRP1UYuxG43ETSN8g";
-  oldToken = 'Basic ' + btoa('user:e043ead5-e035-4dea-8ffc-1b979d7526ed');
+  token="";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer ${this.apiKey}`
-      //'Authorization': `Bearer ${this.token}` //in practice do not hard code username & password like this
     }),
   };
   AllCompanies:any={}
   AllEmployees:any={}
-  
-  constructor(private http: HttpClient) { 
+  loginState = new Subject<boolean>();
 
+  constructor(private http: HttpClient) { 
+    this.loginState.next(false);
+  }
+
+  checkAuth(){
+    const data={
+      "email":"user3@gmail.com",
+      "password":"1234"
+    };//hard coding email &n password for now, normally user will be promted for one
+    const url = `${this.baseUrl}/v1/auth/authenticate`;
+    return this.http.post(url,data)
+    .toPromise()
+    .then((results:any)=>{
+      if(results["access_token"]!=null){
+        this.token =results["access_token"];
+        this.httpOptions={
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.token}`
+          }),
+        };
+        return true;
+      }
+      else return false;
+    });
+  }
+
+  registerAuth(){
+    const data={
+        "firstname":"second",
+        "lastname":"user",
+        "email":"user2@gmail.com",
+        "password":"1234"
+    };//hard coding email &n password for now, normally user will be promted for one
+    const url = `${this.baseUrl}/v1/auth/register`;
+    return this.http.post(url,data)
+    .toPromise()
+    .then((results:any)=>{
+      console.log(results);
+      if(results["access_token"]!=null){
+        this.token =results["access_token"];
+        this.httpOptions={
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.token}`
+          }),
+        };
+        return true;
+      }
+      else return false;
+    })
   }
 
   log(data:any){

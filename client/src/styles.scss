@@ -157,3 +157,15 @@ mat-form-field {
     display: flex;
     justify-content: space-around;  
   }
+
+  .auth-screen {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-screen {
+    height: 100vh;
+  }

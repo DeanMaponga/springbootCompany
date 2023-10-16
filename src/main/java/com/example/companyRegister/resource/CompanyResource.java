@@ -18,7 +18,7 @@ import com.example.companyRegister.models.Company;
 import com.example.companyRegister.service.CompanyService;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/api/company")
 public class CompanyResource {
     private final CompanyService companyService;
     public CompanyResource(CompanyService companyService){

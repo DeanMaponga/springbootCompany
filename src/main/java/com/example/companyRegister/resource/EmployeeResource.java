@@ -18,7 +18,7 @@ import com.example.companyRegister.models.Employee;
 import com.example.companyRegister.service.EmployeeService;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 public class EmployeeResource {
     private final EmployeeService employeeService;
     public EmployeeResource(EmployeeService employeeService){

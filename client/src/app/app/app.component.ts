@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
@@ -7,19 +7,10 @@ import { ApiService } from '../services/api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'client';
-  constructor(private router: Router,private apiService:ApiService) {}
-  
+export class AppComponent implements OnInit{
+  isAuthenticated = false;
+  constructor(private apiService: ApiService) {}
   ngOnInit() {
-    console.log("home")
-  }
-
-  currentPage(){
-    return this.apiService.currentTab;
-  }
-  changePage(page: string) {
-    this.apiService.currentTab = page;
-    this.router.navigate([`/${page}`]);
+    this.apiService.loginState.subscribe(state => {this.isAuthenticated = state;});
   }
 }
